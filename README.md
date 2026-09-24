@@ -1,122 +1,177 @@
-⚡ SESI - Rastreamento de Consumo e Desperdício de Energia
+# ⚡ SESI - Sistema de Rastreamento de Consumo e Desperdício de Energia
 
-SESI - Sistema de Rastreamento de Consumo e Desperdício de Energia
+## 📌 Sobre o Projeto
 
-🧪 Testes com Thunder Client
+O **SESI (Sistema de Rastreamento de Consumo e Desperdício de Energia)** é uma API desenvolvida para monitorar e controlar o consumo de energia elétrica de equipamentos em diferentes ambientes.
 
-Print:
+O sistema permite cadastrar, consultar, atualizar, excluir e pesquisar equipamentos, facilitando a identificação de locais e equipamentos com consumo elevado de energia.
 
-prints/01_get_todos.png
+O objetivo é auxiliar no acompanhamento do consumo energético e contribuir para a redução do desperdício de energia.
 
-Teste 2 - GET por ID
-GET http://localhost:3000/equipamentos/1
+---
 
+## 🎯 Objetivos
 
-Print:
+- Monitorar o consumo de energia dos equipamentos.
+- Identificar equipamentos com consumo elevado.
+- Organizar os registros por local e mês de referência.
+- Facilitar o gerenciamento dos dados de consumo.
+- Contribuir para a conscientização sobre o desperdício de energia.
 
-prints/02_get_id.png
+---
 
-Teste 3 - Busca por equipamento
-GET http://localhost:3000/buscar/equipamento/ar-condicionado
+## 🛠️ Tecnologias Utilizadas
 
+- Node.js
+- Express
+- JavaScript
+- JSON
+- Thunder Client
+- Visual Studio Code
 
-Print:
+---
 
-prints/03_busca_equipamento.png
+## 📂 Estrutura do Projeto
 
-Teste 4 - Busca por local
-GET http://localhost:3000/buscar/local/laboratório
+```text
+SESI/
+│
+├── dados.json
+├── package.json
+├── server.js
+├── README.md
+│
+└── prints/
+    ├── 01_get_todos.png
+    ├── 02_get_id.png
+    ├── 03_busca_equipamento.png
+    ├── 04_busca_local.png
+    ├── 05_post_cadastro.png
+    ├── 06_put_atualizacao.png
+    └── 07_delete.png
+```
 
+---
 
-Print:
+### 📋 Descrição dos Campos
 
-prints/04_busca_local.png
+| Campo | Descrição |
+|---|---|
+| `id` | Identificador único do equipamento |
+| `local` | Local onde o equipamento está instalado |
+| `equipamento` | Nome do equipamento monitorado |
+| `consumo_kwh` | Consumo de energia em kWh |
+| `mes_referencia` | Mês utilizado como referência |
+| `status` | Situação do consumo energético |
 
-Teste 5 - POST
-POST http://localhost:3000/equipamentos
+---
 
+## 🔗 Rotas da API
 
-Print:
+A API disponibiliza rotas para consulta, pesquisa e gerenciamento dos equipamentos.
 
-prints/05_post_cadastro.png
+| Método | Rota | Descrição |
+|---|---|---|
+| GET | `/equipamentos` | Retorna todos os equipamentos |
+| GET | `/equipamentos/:id` | Busca um equipamento pelo ID |
+| GET | `/buscar/equipamento/:nome` | Busca pelo nome do equipamento |
+| GET | `/buscar/local/:local` | Busca pelo local |
+| POST | `/equipamentos` | Cadastra um novo equipamento |
+| PUT | `/equipamentos/:id` | Atualiza um equipamento |
+| DELETE | `/equipamentos/:id` | Exclui um equipamento |
 
-Teste 6 - PUT
-PUT http://localhost:3000/equipamentos/1
+---
 
+## 🧪 Testes com Thunder Client
 
-Print:
+Os testes da API foram realizados utilizando a extensão Thunder Client, no Visual Studio Code.
 
-prints/06_put_atualizacao.png
+### Teste 1 - GET Todos os Equipamentos
 
-Teste 7 - DELETE
-DELETE http://localhost:3000/equipamentos/5
+Retorna todos os equipamentos cadastrados.
 
+**Requisição:**
 
+```http
+GET http://localhost:3000/equipamentos
+```
 
-📊 Exemplo de dados
+**Print:**
 
-O arquivo dados.json contém registros semelhantes aos seguintes:
+![GET Todos](prints/01_get_todos.png)
 
-[
-  {
-    "id": 1,
-    "local": "Laboratório 03",
-    "equipamento": "Ar-condicionado",
-    "consumo_kwh": 185.4,
-    "mes_referencia": "2026-09",
-    "status": "Consumo elevado"
-  },
-  {
-    "id": 2,
-    "local": "Sala 12",
-    "equipamento": "Computadores",
-    "consumo_kwh": 92.7,
-    "mes_referencia": "2026-09",
-    "status": "Consumo normal"
-  },
-  {
-    "id": 3,
-    "local": "Oficina Mecânica",
-    "equipamento": "Compressor de ar",
-    "consumo_kwh": 245.8,
-    "mes_referencia": "2026-09",
-    "status": "Consumo elevado"
-  },
-  {
-    "id": 4,
-    "local": "Biblioteca",
-    "equipamento": "Iluminação",
-    "consumo_kwh": 68.3,
-    "mes_referencia": "2026-09",
-    "status": "Consumo normal"
-  },
-  {
-    "id": 5,
-    "local": "Sala dos Professores",
-    "equipamento": "Geladeira",
-    "consumo_kwh": 54.6,
-    "mes_referencia": "2026-09",
-    "status": "Consumo normal"
-  }
-]
+---
 
-📋 Campos dos registros
-Campo	Descrição
-id	Identificador único do equipamento
-local	Local onde o equipamento está instalado
-equipamento	Nome do equipamento
-consumo_kwh	Consumo de energia em kWh
-mes_referencia	Mês utilizado como referência
-status	Situação do consumo
+### Teste 2 - GET por ID
 
-⚠️ Validações
+Busca um equipamento específico pelo seu identificador.
 
-O sistema verifica se os campos obrigatórios foram preenchidos no cadastro.
-Os campos obrigatórios são:
+**Print:**
 
-Local;
-Equipamento;
-Consumo em kWh;
-Mês de referência;
-Status.
-Caso algum campo esteja vazio, a API retorna uma mensagem de erro.
+![GET por ID](prints/02_get_id.png)
+
+---
+
+### Teste 3 - Busca por Equipamento
+
+Pesquisa os registros pelo nome do equipamento.
+
+**Print:**
+
+![Busca por equipamento](prints/03_busca_equipamento.png)
+
+---
+
+### Teste 4 - Busca por Local
+
+Pesquisa os equipamentos cadastrados em determinado local.
+
+**Print:**
+
+![Busca por local](prints/04_busca_local.png)
+
+---
+
+### Teste 5 - POST Cadastro
+
+Cadastra um novo equipamento no sistema.
+
+**Print:**
+
+![POST Cadastro](prints/05_post_cadastro.png)
+
+---
+
+### Teste 6 - PUT Atualização
+
+Atualiza os dados de um equipamento existente.
+
+**Print:**
+
+![PUT Atualização](prints/06_put_atualizacao.png)
+
+---
+
+### Teste 7 - DELETE Exclusão
+
+Exclui um equipamento pelo seu identificador.
+
+**Print:**
+
+![DELETE Exclusão](prints/07_delete.png)
+
+---
+
+## ⚠️ Validações
+
+O sistema verifica se todos os campos obrigatórios foram preenchidos durante o cadastro de um equipamento.
+
+### Campos obrigatórios
+
+- Local
+- Equipamento
+- Consumo em kWh
+- Mês de referência
+- Status
+
+Caso algum campo obrigatório esteja vazio ou não seja informado, a API retorna uma mensagem de erro, impedindo o cadastro incompleto.
