@@ -89,7 +89,6 @@ app.post("/equipamentos", (req, res) => {
             mensagem: "Todos os campos são obrigatórios."
         });
     }
-
     const novoId = dados.length > 0
         ? Math.max(...dados.map(item => item.id)) + 1
         : 1;
