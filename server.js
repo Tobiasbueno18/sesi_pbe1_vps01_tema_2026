@@ -27,13 +27,11 @@ function salvarDados(dados) {
     );
 }
 
-// consulta equipamentos
 app.get("/equipamentos", (req, res) => {
     const dados = lerDados();
     res.json(dados);
 });
 
-// consulta ID
 app.get("/equipamentos/:id", (req, res) => {
     const dados = lerDados();
     const id = Number(req.params.id);
@@ -49,7 +47,6 @@ app.get("/equipamentos/:id", (req, res) => {
     res.json(equipamento);
 });
 
-// consulta por equipamento
 app.get("/buscar/equipamento/:nome", (req, res) => {
     const dados = lerDados();
     const nome = req.params.nome.toLowerCase();
@@ -61,7 +58,6 @@ app.get("/buscar/equipamento/:nome", (req, res) => {
     res.json(resultados);
 });
 
-// consulta por local
 app.get("/buscar/local/:local", (req, res) => {
     const dados = lerDados();
     const local = req.params.local.toLowerCase();
